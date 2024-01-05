@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block main %}
+<form action="/" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="addcash" name="addcash" placeholder="Add Cash" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Transfer Cash</button>
+</form>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Stock</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Current Price</th>
+            <th scope="col">Current Value</th>
+        </tr>
+        </tr>
+    </thead>
+        {% for row in holdings %}
+        <tr>
+            <td>
+                {{ row['stock'] }}
+            </td>
+            <td>
+                {{ row['shares'] }}
+            </td>
+            <td>
+                {{ row['current_price'] }}
+            </td>
+            <td>
+                {{ row['current_value'] }}
+            </td>
+        </tr>
+        {% endfor %}
+        <tr><td></td><td></td><td>Total</td><td>{{ total }}</td></tr>
+        <tr><td></td><td></td><td>Cash</td><td>{{ totalcash }}</td></tr>
+        <tr><td></td><td></td><td>Cash + Stock Value</td><td>{{ totalassets }}</td></tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Stock</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Share Price</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+            </tr>
+            </tr>
+        </thead>
+        {% for row in history %}
+        <tr>
+            <td>
+                {{ row['stock'] }}
+            </td>
+            <td>
+                {{ row['shares'] }}
+            </td>
+            <td>
+                {{ row['price'] }}
+            </td>
+            <td>
+                {{ row['cost'] }}
+            </td>
+            <td>
+                {{ row['month'] }}/{{ row['day'] }}/{{ row['year'] }}
+            </td>
+            <td>
+                {{ row['hour'] }}:{{ row['minute'] }}:{{ row['second'] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
